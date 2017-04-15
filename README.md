@@ -14,3 +14,5 @@
 12. Only Authorized address can call Minion Contract => Test OK
 13. Minion cntract cen send ether to specified Address. => Test OK
 14. Add More address in permission List by Persona => Test OK.
+15. Send Ether to defaultMinion Contract. => Test OK.
+16. Destroy DefaultMinion by Persona Power => Test OK. 
