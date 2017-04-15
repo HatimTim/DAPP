@@ -10,5 +10,5 @@
 8. request Ether from Minion Contract to Persona Contract => Test OK
 9. Verify Ether request in Persona Contract => Test OK
 10. Send requested Ether from Persona Contract to Minion Contract => Test OK
-11. Destroy Minion contract by a call from Persona Contract
-12. Only Authorized address can call Minion Contract 
+11. Destroy Minion contract by a call from Persona Contract => Test OK
+12. Only Authorized address can call Minion Contract => Test OK
