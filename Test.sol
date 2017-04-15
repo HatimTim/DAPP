@@ -21,6 +21,7 @@ contract Minion {
 		string public minionName;
 		address public personaAddress;
 		address public owner;
+		uint256 public contractBalance;
 
 		mapping(address=>AuthorizedList) public list;
 
@@ -42,6 +43,15 @@ contract Minion {
 	        if (msg.sender != personaAddress) throw;
 	        _;
 	    }
+
+		function getBalance() returns (uint256 contractBalance) {
+		    contractBalance = this.balance;
+			return contractBalance;
+		}
+
+		function getAddress() returns (address _address){
+			return this;
+		}
         
         function () payable {
             total += msg.value;
@@ -90,7 +100,8 @@ contract Persona is Mortal{
 		
 		string public personaName;
 		address public personaAddress;
-		Minion public DefaultMinion;
+		address public defaultMinionAddress;
+		uint256 public contractBalance;
 
 		mapping(address=>minionStruct) public labels;
 
@@ -105,11 +116,16 @@ contract Persona is Mortal{
 		function Persona(string _name){
 			personaName = _name;
 			personaAddress = this;
-			DefaultMinion = new Minion("DefaultMinion", this);
-			DefaultMinion.setList(owner);
+			Minion defaultMinion = new Minion("DefaultMinion", this);
+			defaultMinion.setList(owner);
+			defaultMinionAddress = defaultMinion.getAddress();
 		}
-		
-	
+
+		function getBalance() returns (uint256 contractBalance) {
+		    contractBalance = this.balance;
+			return contractBalance;
+		}
+
         function () payable {
             Paid(msg.value);
             Balance(this.balance);
